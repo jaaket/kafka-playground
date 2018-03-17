@@ -1,2 +1,2 @@
-FROM postgres:10.3
+FROM debezium/postgres
 COPY init.sql /docker-entrypoint-initdb.d/
