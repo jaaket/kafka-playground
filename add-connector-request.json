@@ -1,0 +1,13 @@
+{
+  "name": "music-connector",
+  "config": {
+    "name": "music-connector",
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "legacy-db",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "dummy",
+    "database.dbname" : "postgres",
+    "database.server.name": "music"
+  }
+}
