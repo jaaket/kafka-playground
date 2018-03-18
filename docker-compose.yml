@@ -4,10 +4,6 @@ services:
     build: legacy-db
     ports:
       - 5432:5432
-    volumes:
-      - type: bind
-        source: ./legacy-db
-        target: /docker-entrypoint-initdb.d
   zookeeper:
     image: debezium/zookeeper:0.7
     ports:
