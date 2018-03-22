@@ -11,6 +11,6 @@
     "transforms.ExtractKey.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
     "transforms.ExtractKey.field": "id",
     "transforms.RemoveFields.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
-    "transforms.RemoveFields.blacklist": "before,op,ts_ms"
+    "transforms.RemoveFields.blacklist": "before,op,ts_ms,source"
   }
 }
