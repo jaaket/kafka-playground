@@ -1,0 +1,15 @@
+{
+  "name": "elasticsearch-sink",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "tasks.max": "1",
+    "topics": "music.public.artist",
+    "key.ignore": "true",
+    "connection.url": "http://elasticsearch:9200",
+    "type.name": "kafka-connect",
+    "name": "elasticsearch-sink",
+    "transforms": "RemoveFields",
+    "transforms.RemoveFields.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.RemoveFields.blacklist": "before,op,ts_ms"
+  }
+}

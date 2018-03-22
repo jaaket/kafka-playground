@@ -18,6 +18,12 @@ services:
       - zookeeper
     environment:
       - ZOOKEEPER_CONNECT=zookeeper
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.8
+    ports:
+      - 9200:9200
+    environment:
+      - xpack.security.authc.anonymous.roles=superuser
   connect:
     image: debezium/connect:0.7
     ports:
@@ -26,8 +32,21 @@ services:
       - zookeeper
       - kafka
       - legacy-db
+      - elasticsearch
     environment:
       - GROUP_ID=1
       - CONFIG_STORAGE_TOPIC=my_connect_configs
       - OFFSET_STORAGE_TOPIC=my_connect_offsets
       - BOOTSTRAP_SERVERS=kafka:9092
+    volumes:
+      - type: bind
+        source: ./connectors
+        target: /kafka/connect/elasticsearch
+  build-kafka-connect-elasticsearch:
+    build: build-kafka-connect-elasticsearch
+    volumes:
+      - type: bind
+        source: ./connectors/elasticsearch
+        target: /build
+    environment:
+      - MAVEN_CONFIG=/home/maven/.m2
