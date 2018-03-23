@@ -7,10 +7,12 @@
     "connection.url": "http://elasticsearch:9200",
     "type.name": "kafka-connect",
     "name": "elasticsearch-sink",
-    "transforms": "ExtractKey, RemoveFields",
+    "transforms": "ExtractKey, RemoveFields, RemoveWrapping",
     "transforms.ExtractKey.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
     "transforms.ExtractKey.field": "id",
     "transforms.RemoveFields.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
-    "transforms.RemoveFields.blacklist": "before,op,ts_ms,source"
+    "transforms.RemoveFields.blacklist": "before,op,ts_ms,source",
+    "transforms.RemoveWrapping.type": "org.apache.kafka.connect.transforms.ExtractField$Value",
+    "transforms.RemoveWrapping.field": "after"
   }
 }
